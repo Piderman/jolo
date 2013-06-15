@@ -1,0 +1,63 @@
+//so we can add -prefix-[property], need blank is last to output standard prop
+$prefixes: "-webkit-", "-moz-", "-ms-", "-o-", "";
+
+
+
+//----------------------------------------------------------------------------
+
+
+//helpers
+
+//convert pixels to em
+@function em($font-size) {
+	//force 'cast' to em unit
+	@return ($font-size / 16) * 1em;
+}
+
+
+
+@mixin clearfix {
+	@if $isDebug {
+		/* clearfix mixin */
+		using: clearfix;
+	}
+
+	&:after {
+		content: ""; display: table; clear:both;
+	}
+
+
+	// trigger layout for oldies
+	@if $isOldie {
+		.lt-ie8 & { zoom: 1;}
+	}
+}
+
+%clearfix { @include clearfix; }
+
+.clearfix { @extend %clearfix; }
+
+
+//----------------------------------------------------------------------------
+
+
+//prefixers
+
+//give transisions
+@mixin border-radius($radius){
+	@each $prefix in $prefixes {
+		#{$prefix}border-radius: $radius;
+	}
+}
+
+@mixin transition($transition...){
+	@each $prefix in $prefixes {
+		#{$prefix}transition: $transition;
+	}
+}
+
+@mixin transform($transform){
+	@each $prefix in $prefixes {
+		#{$prefix}transform: $transform;
+	}
+}

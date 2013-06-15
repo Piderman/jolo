@@ -1,0 +1,65 @@
+nav {
+	//place variables, mixins and extends at the top
+	@extend %clearfix;
+	li {
+
+		float: left;
+		margin: 5px 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+
+	//make look like a button
+	a {
+
+		display: block;
+		padding: 5px 10px;
+		text-decoration: none;
+		text-align: center;
+		color: #fff;
+		background :#9a2b53;
+
+		//AA site, need to convert 24px to em
+		font-size: em(24);
+
+		//css3? place at the end so you can see repeated code
+		@include border-radius(10px);
+
+
+		&:hover,
+		&:focus { color: #9a2b53; background: #ccc; }
+
+	}
+
+	.no-js & { position: static; }
+}
+
+.blog {
+
+	.title { font-weight: bold; }
+
+	.date {
+		color: grey;
+	}
+
+	.summary { font-size: 14px; }
+}
+
+
+.footerNav ul { 
+	/* dont have acces to in the cms, fking telerik */
+	@extend %clearfix;
+
+	li {
+		float: left;
+	}
+}
+
+
+@media (min-width: 640px) {
+	.inMediaQuery {
+		// @extend %clearfix;
+		@include clearfix;
+	}
+}

@@ -1,0 +1,72 @@
+.clearfix, nav, .footerNav ul {
+  /* clearfix mixin */
+  using: clearfix;
+}
+.clearfix:after, nav:after, .footerNav ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.lt-ie8 .clearfix, .lt-ie8 nav, .lt-ie8 .footerNav ul, .footerNav .lt-ie8 ul {
+  zoom: 1;
+}
+
+nav li {
+  float: left;
+  margin: 5px 0;
+  padding: 0;
+  list-style: none;
+}
+nav a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  background: #9a2b53;
+  font-size: 1.5em;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+nav a:hover, nav a:focus {
+  color: #9a2b53;
+  background: #ccc;
+}
+.no-js nav {
+  position: static;
+}
+
+.blog .title {
+  font-weight: bold;
+}
+.blog .date {
+  color: grey;
+}
+.blog .summary {
+  font-size: 14px;
+}
+
+.footerNav ul {
+  /* dont have acces to in the cms, fking telerik */
+}
+.footerNav ul li {
+  float: left;
+}
+
+@media (min-width: 640px) {
+  .inMediaQuery {
+    /* clearfix mixin */
+    using: clearfix;
+  }
+  .inMediaQuery:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .lt-ie8 .inMediaQuery {
+    zoom: 1;
+  }
+}
