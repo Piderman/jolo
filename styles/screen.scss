@@ -3,6 +3,11 @@ $debug: true;
 //so we can add -prefix-[property], need blank is last to output standard prop
 $prefixes: "-webkit-", "-moz-", "-ms-", "-o-", "";
 
+//convert pixel to em
+@function em($font-size) {
+	//force 'cast' to em unit
+	@return ($font-size / 16) * 1em;
+}
 
 //give transisions
 @mixin border-radius($radius){
@@ -10,7 +15,7 @@ $prefixes: "-webkit-", "-moz-", "-ms-", "-o-", "";
 		#{$prefix}border-radius: $radius;
 	}
 }
-
+//think of as copy-paste
 @mixin clearfix {
 	@if $debug {
 		/* clearfix mixin */
@@ -22,13 +27,13 @@ $prefixes: "-webkit-", "-moz-", "-ms-", "-o-", "";
 	}
 }
 
-
-// %clearfix {
-// 	@include clearfix;
-// }
+//holly-shitballs automagical concatenation
+%clearfix {
+	@include clearfix;
+}
 
 .clearfix {
-	@include clearfix;
+	@extend %clearfix;
 }
 
 
@@ -39,8 +44,8 @@ $prefixes: "-webkit-", "-moz-", "-ms-", "-o-", "";
 
 
 nav {
-	// @include clearfix;
-
+	//place variables, mixins and extends at the top
+	@extend %clearfix;
 	li {
 
 		float: left;
@@ -60,6 +65,10 @@ nav {
 		color: #fff;
 		background :#9a2b53;
 
+		//AA site, need to convert 24px to em
+		font-size: em(24);
+
+		//css3? place at the end so you can see repeated code
 		@include border-radius(10px);
 
 
@@ -80,4 +89,22 @@ nav {
 	}
 
 	.summary { font-size: 14px; }
+}
+
+
+.footerNav ul { 
+	/* dont have acces to in the cms, fking telerik */
+	@extend %clearfix;
+
+	li {
+		float: left;
+	}
+}
+
+
+@media (min-width: 640px) {
+	.inMediaQuery {
+		// @extend %clearfix;
+		@include clearfix;
+	}
 }
