@@ -1,0 +1,46 @@
+.clearfix {
+  /* clearfix mixin */
+  using: clearfix;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+nav li {
+  float: left;
+  margin: 5px 0;
+  padding: 0;
+  list-style: none;
+}
+nav a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  background: #9a2b53;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+nav a:hover, nav a:focus {
+  color: #9a2b53;
+  background: #ccc;
+}
+.no-js nav {
+  position: static;
+}
+
+.blog .title {
+  font-weight: bold;
+}
+.blog .date {
+  color: grey;
+}
+.blog .summary {
+  font-size: 14px;
+}

@@ -1,0 +1,83 @@
+$debug: true;
+
+//so we can add -prefix-[property], need blank is last to output standard prop
+$prefixes: "-webkit-", "-moz-", "-ms-", "-o-", "";
+
+
+//give transisions
+@mixin border-radius($radius){
+	@each $prefix in $prefixes {
+		#{$prefix}border-radius: $radius;
+	}
+}
+
+@mixin clearfix {
+	@if $debug {
+		/* clearfix mixin */
+		using: clearfix;
+	}
+
+	&:after {
+		content: ""; display: table; clear:both;
+	}
+}
+
+
+// %clearfix {
+// 	@include clearfix;
+// }
+
+.clearfix {
+	@include clearfix;
+}
+
+
+
+//----------------------------------------------------------------------------
+
+
+
+
+nav {
+	// @include clearfix;
+
+	li {
+
+		float: left;
+		margin: 5px 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+
+	//make look like a button
+	a {
+
+		display: block;
+		padding: 5px 10px;
+		text-decoration: none;
+		text-align: center;
+		color: #fff;
+		background :#9a2b53;
+
+		@include border-radius(10px);
+
+
+		&:hover,
+		&:focus { color: #9a2b53; background: #ccc; }
+
+	}
+
+	.no-js & { position: static; }
+}
+
+.blog {
+
+	.title { font-weight: bold; }
+
+	.date {
+		color: grey;
+	}
+
+	.summary { font-size: 14px; }
+}
